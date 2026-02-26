@@ -1,18 +1,11 @@
 from urllib import request, response
 from django.shortcuts import render
+from .models import teacher
 from django.http import HttpResponse
 from datetime import datetime
 
 # Create your views here.
 def index(request):
-    now = datetime.now()
+    teach = teacher.objects.all()
 
-    return render(
-        request,
-        "MyApp/index.html",
-        {
-            'title' : "Django Home",
-            'message' : "Hello Django ", 
-            'content' : now.strftime("%A, %d %B, %Y at %X")
-        }
-    )
+    return render(request, "MyApp/index.html",{'content': teach})
