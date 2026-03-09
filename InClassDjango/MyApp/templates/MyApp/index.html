@@ -2,7 +2,11 @@
 <head><title>{{ title }}</title></head>
 
 <body>
-    <input type="checkbox"><label>Delivrable as VET</label><br>
+    <form action="/VET/" method="post">
+        <!--{% csrf_token %}
+        {{ form }}-->
+        <input type="checkbox"><label>Delivrable as VET</label><br />
+    </form>
     <strong>Teachers:</strong>
     {% if content %}
     <table>
