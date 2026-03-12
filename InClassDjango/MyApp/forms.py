@@ -1,4 +1,13 @@
 from django import forms
 
-class checkForm(forms.Form):
-    isVET = forms.CheckboxInput()
+from .models import teacher
+
+
+
+class InputForm(forms.ModelForm):
+
+    class Meta:
+
+        model = teacher
+
+        fields = ['Name', 'Area', 'VET']

@@ -1,9 +1,10 @@
 from urllib import request, response
-from django.shortcuts import render
 from .models import teacher
 from django.http import HttpResponseRedirect
+from django.shortcuts import render, redirect
 
-from .forms import  checkForm
+from .models import teacher
+from .forms import InputForm
 
 # Create your views here.
 def index(request):
@@ -11,8 +12,24 @@ def index(request):
 
     return render(request, "MyApp/index.html",{'content': teach})
 
-def get_VET(request):
-    if request.methord == 'POST':
-        form = checkForm(request.POST)
+def input_view(request):
+
+    if request.method == "POST":
+        
+        form = InputForm(request.POST)
+
+
+
         if form.is_valid():
-            return HttpResponseRedirect('/thanks/')
+
+            form.save()
+
+            return redirect("index")
+
+    else:
+
+        form = InputForm()
+
+
+
+    return render(request, "MyApp/input.html", {"form": form})

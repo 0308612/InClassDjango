@@ -1,6 +1,6 @@
 import csv
 from django.core.management import BaseCommand
-from MyApp.models import teacher
+from models import teacher
 
 class Command(BaseCommand):
     help = "This is some help text"
